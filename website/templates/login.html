@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <title>Welcome</title>
+</head>
+<body style="background:#fff">
+  <div class="login-wrap">
+    <div class="login-left">Password<br>Security<br>Checker</div>
+    <div class="login-right">
+      <h2>Hello!<br>Welcome</h2>
+      <p style="text-align:center">Login your account</p>
+      <div class="login-card">
+        <label>Username</label>
+        <input type="text" />
+        <label>Password</label>
+        <input type="password" />
+        <p><label style="display:inline"><input type="checkbox" checked /> Remember me</label>
+           <a href="#" style="float:right">Forgot Password</a></p>
+        <a class="login-btn" href="{{ url_for('views.home') }}">Login</a>
+      </div>
+      <p class="tagline">Make sure your passwords keep your information safe at all times!</p>
+    </div>
+  </div>
+</body>
+</html>

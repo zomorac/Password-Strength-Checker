@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Check Password Strength{% endblock %}
+{% block content %}
+<div class="checker-box">
+  <div class="pw-wrap">
+    <input type="password" id="pw" placeholder="Evaluate your password:" autocomplete="off" />
+    <button type="button" class="eye" onclick="toggle()">&#128065;</button>
+  </div>
+  <p><b>Your password strength</b></p>
+  <div class="meter"></div>
+</div>
+<button type="button" class="save-btn" onclick="savePassword()">Save This Password</button>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function toggle() {
+    const el = document.getElementById("pw");
+    el.type = el.type === "password" ? "text" : "password";
+  }
+  function savePassword() {
+    const pw = document.getElementById("pw").value;
+    if (!pw) { alert("Type a password first."); return; }
+    sessionStorage.setItem("pendingPassword", pw);   // not put in the URL
+    window.location.href = "{{ url_for('views.saved_passwords') }}";
+  }
+</script>
+{% endblock %}

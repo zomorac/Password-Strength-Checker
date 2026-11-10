@@ -1,21 +1,45 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
-%}
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul>
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="chart">
+  <h2>Password strength test chart</h2>
+
+  <div class="tier strong">
+    <div class="bars">
+      <div class="bar" style="width:100%">16+</div>
+      <div class="bar" style="width:94%">15</div>
+      <div class="bar" style="width:88%">14</div>
+    </div>
+    <div class="info"><b>Strong</b>Time to crack:<br>Centuries</div>
   </div>
-</form>
+
+  <div class="tier good">
+    <div class="bars">
+      <div class="bar" style="width:82%">13</div>
+      <div class="bar" style="width:76%">12</div>
+      <div class="bar" style="width:70%">11</div>
+    </div>
+    <div class="info"><b>Good</b>Time to crack:<br>Months to years</div>
+  </div>
+
+  <div class="tier weak">
+    <div class="bars">
+      <div class="bar" style="width:64%">10</div>
+      <div class="bar" style="width:58%">9</div>
+      <div class="bar" style="width:52%">8</div>
+    </div>
+    <div class="info"><b>Weak</b>Time to crack:<br>Hours to days</div>
+  </div>
+
+  <div class="tier vweak">
+    <div class="bars">
+      <div class="bar" style="width:46%">7</div>
+      <div class="bar" style="width:40%">6</div>
+      <div class="bar" style="width:34%">5</div>
+    </div>
+    <div class="info"><b>Very weak</b>Time to crack:<br>Seconds to minutes</div>
+  </div>
+
+  <p style="text-align:center">Number of characters</p>
+</div>
 {% endblock %}
